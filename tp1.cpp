@@ -78,5 +78,7 @@ int main (int argc, char *argv[]) {
     printf("%f\n", b[i]);
   }
 
+
+  
   return 0;
 }
