@@ -80,3 +80,15 @@ int main (int argc, char *argv[]) {
 
   return 0;
 }
+
+  void eliminacionGaussiana(vector<vector<double > > &C){
+    uint n = C.size();
+    for(uint i = 0; i < n-1; i++){
+        for(uint j = i+1; j < n; j++){
+            double multiplicador = C[j][i]/C[i][i];
+            for(uint k = i; k < n; k++){
+                C[j][k] -= multiplicador*C[i][k];
+            }
+        }
+    }
+}
