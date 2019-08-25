@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 
+#include "cmm.cpp"
+
 using namespace std;
 
 int main (int argc, char *argv[]) {
@@ -12,7 +14,7 @@ int main (int argc, char *argv[]) {
   }
 
   // parametros por linea de comando
-  int mode = atoi(argv[1]);
+  uint mode = atoi(argv[1]);
   char *input = argv[2];
   char *output = argv[3];
 
@@ -20,77 +22,42 @@ int main (int argc, char *argv[]) {
   ifstream inputFile;
   inputFile.open(input);
 
+  if (mode > 2) {
+    printf("Metodo invalido");
+    return 1;
+  }
+
   if (!inputFile.is_open()) {
     printf("Archivo de entrada invalido.\n");
     return 1;
   }
+
 
   // T: cantidad de equipos
   // P: cantidad de partidos
   uint T, P;
   inputFile >> T >> P;
 
-  // Contruccion de matriz C y vector b
-  // Se contruye mientras se leen los datos
-  vector<vector<int> > C(T);
-  for (uint i = 0; i < T; i++) {
-    C[i] = vector<int>(T, 0);
-    C[i][i] += 2;
-  }
+  vector<double> r; // ranking
 
-  // Pra construir b necesitamos partidos ganados y perdidos de cada equipo
-  vector<int> w(T, 0);
-  vector<int> l(T, 0);
-
-  for (uint i = 0; i < P; i++) {
-    uint fecha, iEquipo, iPuntos, jEquipo, jPuntos;
-    inputFile >> fecha >> iEquipo >> iPuntos >> jEquipo >> jPuntos;
-
-    iEquipo -= 1;
-    jEquipo -= 1;
-
-    uint winner = iPuntos > jPuntos ? iEquipo : jEquipo;
-    uint looser = winner == iEquipo ? jEquipo : iEquipo;
-
-    w[winner] += 1;
-    l[looser] += 1;
-
-    // i!=j
-    C[iEquipo][jEquipo] -= 1;
-    C[jEquipo][iEquipo] -= 1;
-
-    // i==j
-    C[iEquipo][iEquipo] += 1;
-    C[jEquipo][jEquipo] += 1;
+  // eleccion de metodo:
+  switch (mode) {
+    case 0:
+      r = cmm(T, P, inputFile);
+      break;
+    case 1:
+      printf("Implementar WP");
+      return 1;
+    case 2:
+      printf("Implementar ?");
+      return 1;
   }
 
   inputFile.close();
 
-  vector<double> b(T, 0);
-  for(uint i = 0; i < T; i++) {
-    b[i] = 1 + (w[i] - l[i]) / 2;
-  }
 
-  for (uint i = 0; i < T; i++) {
-    for (uint j = 0; j < T; j++) {
-      printf("%d ", C[i][j]);
-    }
-    printf("%f\n", b[i]);
-  }
+  ofstream outputFile;
+  outputFile.open(output);
 
-
-  
-  return 0;
-}
-
-  void eliminacionGaussiana(vector<vector<double > > &C){
-    uint n = C.size();
-    for(uint i = 0; i < n-1; i++){
-        for(uint j = i+1; j < n; j++){
-            double multiplicador = C[j][i]/C[i][i];
-            for(uint k = i; k < n; k++){
-                C[j][k] -= multiplicador*C[i][k];
-            }
-        }
-    }
+  write_vector(r, outputFile);
 }
