@@ -1,10 +1,5 @@
 # metnum-tp1
 
-- [x] Procesamiento de archivo de entrada
-- [ ] Eliminacion Gaussiana en C
-- [ ] Backwards sustitution
-- [ ] Archivo de salida de resultados
-
 ## Compilar
 
 ```
@@ -32,3 +27,12 @@ Ejemplo
 ```
 ./bin/tp1 0 input/test-prob-1.in output/out
 ```
+
+## Scripts
+
+- `run.py` compila y corre `test-prob-1` en modo 0
+  ```
+  python ./scripts/run.py
+  ```
+
+- `cuantitativo.py` compila y corre el test de error absoluto. Imprime los resultados por consola.
