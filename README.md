@@ -8,13 +8,13 @@
 ## Compilar
 
 ```
-g++ tp1.cpp -o tp1
+g++ src/tp1.cpp -o bin/tp1
 ```
 
 ## Ejecutar
 
 ```
-./tp1 [metodo] [in] [out]
+./bin/tp1 [metodo] [in] [out]
 ```
 
 - `metodo`
@@ -30,5 +30,5 @@ g++ tp1.cpp -o tp1
 Ejemplo
 
 ```
-./tp1 0 test-prob-1.in out
+./bin/tp1 0 input/test-prob-1.in output/out
 ```
