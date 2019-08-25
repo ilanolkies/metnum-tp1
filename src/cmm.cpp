@@ -27,8 +27,8 @@ vector<double> cmm (uint T, uint P, ifstream &inputFile) {
   }
 
   // Pra construir b necesitamos partidos ganados y perdidos de cada equipo
-  vector<int> w(T, 0);
-  vector<int> l(T, 0);
+  vector<double> w(T, 0);
+  vector<double> l(T, 0);
 
   for (uint i = 0; i < P; i++) {
     string fecha;
