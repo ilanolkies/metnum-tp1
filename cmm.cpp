@@ -1,9 +1,3 @@
-#include <fstream>
-#include <vector>
-
-#include "eg.cpp"
-#include "backward_substitution.cpp"
-
 using namespace std;
 
 /**
@@ -44,11 +38,9 @@ vector<double> cmm (uint T, uint P, ifstream &inputFile) {
     iEquipo -= 1;
     jEquipo -= 1;
 
-    uint winner = iPuntos > jPuntos ? iEquipo : jEquipo;
-    uint looser = winner == iEquipo ? jEquipo : iEquipo;
-
-    w[winner] += 1;
-    l[looser] += 1;
+    winner_looser wl = getWinnerAndLooser(iEquipo, iPuntos, jEquipo, jPuntos);
+    w[wl.winner] += 1;
+    l[wl.looser] += 1;
 
     // i!=j
     C[iEquipo][jEquipo] -= 1;

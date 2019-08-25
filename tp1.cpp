@@ -1,9 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-
-#include "cmm.cpp"
+#include "tp1.h"
 
 using namespace std;
 
@@ -46,15 +41,14 @@ int main (int argc, char *argv[]) {
       r = cmm(T, P, inputFile);
       break;
     case 1:
-      printf("Implementar WP");
-      return 1;
+      r = wp(T, P, inputFile);
+      break;
     case 2:
       printf("Implementar ?");
       return 1;
   }
 
   inputFile.close();
-
 
   ofstream outputFile;
   outputFile.open(output);

@@ -1,8 +1,3 @@
-#include <fstream>
-#include <vector>
-
-#include "print_linear_system.cpp"
-
 using namespace std;
 
 /**
