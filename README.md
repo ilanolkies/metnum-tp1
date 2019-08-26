@@ -35,4 +35,4 @@ Ejemplo
   python ./scripts/run.py
   ```
 
-- `cuantitativo.py` compila y corre el test de error absoluto. Imprime los resultados por consola.
+- `cuantitativo.py` compila y corre el test de error absoluto. Imprime los resultados formateados para insertar en Latex.
