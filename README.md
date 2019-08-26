@@ -13,11 +13,12 @@ g++ src/tp1.cpp -o bin/tp1
 ```
 
 - `metodo`
-  | # | Método |
-  | - | - |
-  | 0 | CMM |
-  | 1 | WP |
-  | 2 | ? |
+
+| # | Método |
+| - | - |
+| 0 | CMM |
+| 1 | WP |
+| 2 | ? |
 
 - `in` path al archivo de entrada
 - `out` path al archivo de salida
