@@ -13,14 +13,14 @@ int main (int argc, char *argv[]) {
   char *input = argv[2];
   char *output = argv[3];
 
-  // lectura del input
-  ifstream inputFile;
-  inputFile.open(input);
-
   if (mode > 2) {
     printf("Metodo invalido");
     return 1;
   }
+
+  // lectura del input
+  ifstream inputFile;
+  inputFile.open(input);
 
   if (!inputFile.is_open()) {
     printf("Archivo de entrada invalido.\n");
