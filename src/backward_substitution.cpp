@@ -10,10 +10,10 @@ using namespace std;
  *
  * @returns x : Ax = b
  */
-vector<double> sustitucion(vector<vector<double> > &A, vector<double> &b){
-	int n = A.size();
+vector<double> sustitucion(vector<vector<double> > &A, vector<double> &b) {
+  int n = A.size();
 
-	vector<double> x(n, 0);
+  vector<double> x(n, 0);
 
   for (int i = n-1; i >=0; i--) {x[i] = b[i];
     for (uint j = i + 1; j < n; j++) {
@@ -22,5 +22,5 @@ vector<double> sustitucion(vector<vector<double> > &A, vector<double> &b){
     x[i] /= A[i][i];
   }
 
-	return x;
+  return x;
 }
