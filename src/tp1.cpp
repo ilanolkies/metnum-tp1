@@ -54,4 +54,8 @@ int main (int argc, char *argv[]) {
   outputFile.open(output);
 
   write_vector(r, outputFile);
+
+  outputFile.close();
+
+  return 0;
 }
