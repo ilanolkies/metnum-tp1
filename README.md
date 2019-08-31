@@ -18,7 +18,8 @@ g++ src/tp1.cpp -o bin/tp1
 | - | - |
 | 0 | CMM |
 | 1 | WP |
-| 2 | ? |
+| 2 | AHP |
+| 3 | ODI |
 
 - `in` path al archivo de entrada
 - `out` path al archivo de salida
