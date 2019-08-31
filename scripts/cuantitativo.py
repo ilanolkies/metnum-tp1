@@ -18,21 +18,23 @@ for archivo in archivos:
   actual = np.fromfile('cuantitativo/{0}.out'.format(archivo), count=-1, dtype=float, sep='\n')
   error = np.linalg.norm(actual - expected)
 
-  result = '''
-    \\begin{{center}}
-        \\begin{{tabular}}{{|c c|}}
-            \\hline
-            \multicolumn{{2}}{{|c|}}{{\\textit{{{0}}}}} \\\\
-            \\hline
-            \\hline
-            Esperado & ${1}$ \\\\
-            \\hline
-            Obtenido & ${2}$ \\\\
-            \\hline
-            \\hline
-            Error & ${3}$ \\\\
-            \\hline
-        \\end{{tabular}}
-    \\end{{center}}
-  '''.format(archivo, repr(expected), repr(actual), error)
-  print(result)
+  result = '''\\begin{{center}}
+    \\begin{{tabular}}{{|c c|}}
+        \\hline
+        \multicolumn{{2}}{{|c|}}{{\\textit{{{0}}}}} \\\\
+        \\hline
+        \\hline
+        Esperado & ${1}$ \\\\
+        \\hline
+        Obtenido & ${2}$ \\\\
+        \\hline
+        \\hline
+        Error & ${3}$ \\\\
+        \\hline
+    \\end{{tabular}}
+\\end{{center}}'''.format(archivo, repr(expected), repr(actual), error)
+
+f = open('cuantitativo/resultado_latex.out'.format(out_dir), 'w')
+f.write(out)
+f.close()
+
