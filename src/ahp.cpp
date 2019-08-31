@@ -14,7 +14,7 @@ vector<double> ahp(int T, int P, ifstream &inputFile) {
 	vector<double> res(T, 1);
 
 	//Matriz C
-	vector<vector<double>> C(T);
+	vector<vector<double> > C(T);
 	for (uint i = 0; i < T; i++) {
 		C[i] = vector<double>(T, 0);
 		C[i][i] += 1;
