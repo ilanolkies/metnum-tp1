@@ -44,8 +44,8 @@ int main (int argc, char *argv[]) {
       r = wp(T, P, inputFile);
       break;
     case 2:
-      printf("Implementar ?");
-      return 1;
+      r = ahp(T, P, inputFile);
+      break;
   }
 
   inputFile.close();

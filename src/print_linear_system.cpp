@@ -7,12 +7,12 @@ using namespace std;
  * @param b vector
  */
 void print_matrix_vector (vector<vector<double > > &A, vector<double> &b) {
-  for (uint i = 0; i < A.size(); i++) {
-    for (uint j = 0; j < A.size(); j++) {
-      printf("%f ", A[i][j]);
+    for (uint i = 0; i < A.size(); i++){
+        for(uint j = 0; j < A.size(); j++){
+            printf("%f ", A[i][j]);
+        }
+        printf("| %f\n", b[i]);
     }
-    printf("| %f\n", b[i]);
-  }
 }
 
 /**
@@ -20,10 +20,10 @@ void print_matrix_vector (vector<vector<double > > &A, vector<double> &b) {
  *
  * @param v vector
  */
-void print_vector (vector<double> &v) {
-  for (uint i = 0; i < v.size(); i++) {
-    printf("%f\n", v[i]);
-  }
+void print_vector (vector<double> &v){
+    for(uint i = 0; i < v.size(); i++){
+        printf("%f\n", v[i]);
+    }
 }
 
 /**
@@ -33,8 +33,8 @@ void print_vector (vector<double> &v) {
  * @param v Vector a imprimt
  * @param output Archivo de salida
  */
-void write_vector (vector<double> &v, ofstream &output) {
-  for (uint i = 0; i < v.size(); i++) {
-    output << v[i] << "\n";
-  }
+void write_vector (vector<double> &v, ofstream &output){
+    for (uint i = 0; i < v.size(); i++){
+        output << v[i] << "\n";
+    }
 }
