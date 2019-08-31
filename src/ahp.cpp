@@ -1,4 +1,3 @@
-
 using namespace std;
 
 /**
@@ -11,15 +10,12 @@ using namespace std;
  * @returns Puntos de los T equipos en el ranking de CMM luego de los P enfrentamientos
  */
 
-
-
-vector<double> ahp(int T, int P, ifstream &inputFile){
-	vector<double> res(T, 1);	
-
+vector<double> ahp(int T, int P, ifstream &inputFile) {
+	vector<double> res(T, 1);
 
 	//Matriz C
-	vector<vector<double> > C(T);
-	for(uint i = 0; i < T; i++) {
+	vector<vector<double>> C(T);
+	for (uint i = 0; i < T; i++) {
 		C[i] = vector<double>(T, 0);
 		C[i][i] += 1;
 	}
@@ -37,22 +33,17 @@ vector<double> ahp(int T, int P, ifstream &inputFile){
 
 		C[wl.winner][wl.looser] += 1;
 		C[wl.looser][wl.winner] -= 1;
-
 	}
 
 	inputFile.close();
 
-
-	
-	for(uint i = 0; i < C.size(); i++){
-		for(uint j = 0; j < C.size(); j++){
-			if(C[i][j] != 1){
-				C[i][j] = C[i][j] > 0 ? 1.2 : (1/1.2);
+	for (uint i = 0; i < C.size(); i++) {
+		for (uint j = 0; j < C.size(); j++) {
+			if (C[i][j] != 1) {
+				C[i][j] = C[i][j] > 0 ? 1.2 : (1 / 1.2);
 			}
 		}
 	}
-
-
 
 	/**
 	*	Si hay empate o no hay partidos entre j e i. C[i][j] = 0 
@@ -61,30 +52,26 @@ vector<double> ahp(int T, int P, ifstream &inputFile){
 	* Si i = j entonces 1
 	**/
 
-  vector<double> total(T,0);
-  for(uint i = 0; i < C.size(); i++){
-  	for(uint j = 0; j < C.size(); j++){
-  		total[i] += C[j][i];
-  	}
-  }
+	vector<double> total(T, 0);
+	for (uint i = 0; i < C.size(); i++) {
+		for (uint j = 0; j < C.size(); j++) {
+			total[i] += C[j][i];
+		}
+	}
 
-  for(uint i = 0; i < C.size(); i++){
-  	for(uint j = 0; j < C.size(); j++){
-  		C[j][i] /= total[i];
-  	}
-  }
+	for (uint i = 0; i < C.size(); i++) {
+		for (uint j = 0; j < C.size(); j++) {
+			C[j][i] /= total[i];
+		}
+	}
 
-  for(int i = 0; i< C.size(); i++){
-  	double x = 0;
-  	for(int j = 0; j < C.size(); j++){
-  		x += C[i][j];
-  	}
-  	res[i] = x/(double)T;
-  }
-
-
-
+	for (int i = 0; i < C.size(); i++) {
+		double x = 0;
+		for (int j = 0; j < C.size(); j++) {
+			x += C[i][j];
+		}
+		res[i] = x / (double)T;
+	}
 
 	return res;
-
 }
