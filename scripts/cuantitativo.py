@@ -11,6 +11,8 @@ os.system(mkdir)
 
 archivos = ['test-prob-1', 'test-prob-2', 'test1', 'test2']
 
+result = ''
+
 for archivo in archivos:
   run = './bin/tp1 0 input/{0}.in cuantitativo/{0}.out'.format(archivo)
   os.system(run)
@@ -18,7 +20,8 @@ for archivo in archivos:
   actual = np.fromfile('cuantitativo/{0}.out'.format(archivo), count=-1, dtype=float, sep='\n')
   error = np.linalg.norm(actual - expected)
 
-  result = '''\\begin{{center}}
+  result += '''
+\\begin{{center}}
     \\begin{{tabular}}{{|c c|}}
         \\hline
         \multicolumn{{2}}{{|c|}}{{\\textit{{{0}}}}} \\\\
@@ -32,9 +35,10 @@ for archivo in archivos:
         Error & ${3}$ \\\\
         \\hline
     \\end{{tabular}}
-\\end{{center}}'''.format(archivo, repr(expected), repr(actual), error)
+\\end{{center}}
+'''.format(archivo, repr(expected), repr(actual), error)
 
-f = open('cuantitativo/resultado_latex.out'.format(out_dir), 'w')
-f.write(out)
+f = open('cuantitativo/resultado_latex.out', 'w')
+f.write(result)
 f.close()
 
