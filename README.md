@@ -62,3 +62,15 @@ python ./scripts/comparacion.py INPUT
 
 - `INPUT` en el directorio `./input/INPUT.in`
 - Resultado: rankings y tabla de comparcion en `./comparacion/INPUT/resultado_latex.out`
+
+### Distancias
+
+Resultados de la comparación entre rankings normalizado, para evaluar la distancia entre los puestos.
+
+```
+# desde root
+python ./scripts/distancias.py INPUT
+```
+
+- `INPUT` en el directorio `./input/INPUT.in`
+- Resultado: rankings en `./comparacion/INPUT/resultado_latex.out` y gráfico de barras en `./comparacion/INPUT/img/metodo-X.out`
