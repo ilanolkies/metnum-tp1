@@ -9,7 +9,17 @@ os.system(rm)
 mkdir = 'mkdir cuantitativo'
 os.system(mkdir)
 
-archivos = ['test-prob-1', 'test-prob-2', 'test1', 'test2']
+archivos = [
+  'test-prob-1',
+  'test-prob-2',
+  'test1',
+  'test2',
+  'test_completo_10_1',
+  'test_completo_100_4',
+  'test_completo_100_8',
+  'test_completo_1000_2',
+  'test_completo_1000_8'
+]
 
 result = ''
 
