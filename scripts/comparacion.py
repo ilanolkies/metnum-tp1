@@ -22,7 +22,9 @@ for i in range(4):
 out_dir = 'comparacion/{}'.format(INPUT)
 # retorna el orden por equipo de un ranking dado
 def rankingOrdenado(method):
-  ranking = open('{}/metodo-{}.out'.format(out_dir, method), 'r').read().splitlines()
+  f = open('{}/metodo-{}.out'.format(out_dir, method), 'r')
+  ranking = f.read().splitlines()
+  f.close()
   rankingConEquipo = [(i, float(ranking[i])) for i in range(len(ranking))]
   rankingConEquipo.sort(key = lambda val : val[1])
   return [ranking[0] for ranking in rankingConEquipo]
