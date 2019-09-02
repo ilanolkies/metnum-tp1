@@ -87,3 +87,14 @@ python ./scripts/performance.py INPUT
 
 - `INPUT` en el directorio `./input/INPUT.in`
 - Resultado: rankings en `./output/INPUT.out` y table en `./performance/INPUT/valores.out`
+
+### ATP Datasets
+
+Para convertir el dataset de ATP a un input de `tp1.cpp` se debe
+
+1. Copiar los archivos `atp_matches_2015.csv` y `atp_players.csv` a la carpeta `./dataset`
+2. Correr `python ./scripts/convert_atp_dataset.py`
+
+El resultado es un archivo `./input/atp_matches_2015.in` que representa los enfrentamientos del dataset.
+
+> Los archivos estan ignorados debido a su peso

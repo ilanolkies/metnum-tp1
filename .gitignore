@@ -5,3 +5,5 @@
 .DS_Store
 *.out
 *.png
+/dataset
+/input/atp_matches_2015.in
