@@ -16,12 +16,14 @@ os.system(mkdir)
 import time
 
 start = time.time()
-run = './bin/tp1 0 input/{0}.in output/{0}.out'.format(INPUT)
+run = './bin/tp1 0 input/{}.in output/{}.out'.format(INPUT, INPUT)
+os.system(run)
 end = time.time()
 elpasedEG = end - start
 
 start = time.time()
-run = './bin/tp1 4 input/{0}.in output/{0}.out'.format(INPUT)
+run = './bin/tp1 4 input/{}.in output/{}.out'.format(INPUT, INPUT)
+os.system(run)
 end = time.time()
 elpasedChol = end - start
 

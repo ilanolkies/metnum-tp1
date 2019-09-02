@@ -75,3 +75,15 @@ python ./scripts/distancias.py INPUT
 
 - `INPUT` en el directorio `./input/INPUT.in`
 - Resultado: rankings en `./comparacion/INPUT/resultado_latex.out` y gráfico de barras en `./comparacion/INPUT/img/metodo-X.out`
+
+### Performance
+
+Tiempo de ejecución del ranking CMM con Eliminación Gaussiana y con Factorización de Cholesky
+
+```
+# desde root
+python ./scripts/performance.py INPUT
+```
+
+- `INPUT` en el directorio `./input/INPUT.in`
+- Resultado: rankings en `./output/INPUT.out` y table en `./performance/INPUT/valores.out`
