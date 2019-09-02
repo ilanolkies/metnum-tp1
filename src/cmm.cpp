@@ -9,7 +9,7 @@ using namespace std;
  *
  * @returns Puntos de los T equipos en el ranking de CMM luego de los P enfrentamientos
  */
-vector<double> cmm (uint T, uint P, ifstream &inputFile) {
+vector<double> cmm (uint T, uint P, ifstream &inputFile, bool cholesky = false) {
   // Contruccion de matriz C y vector b
 
   /**
@@ -58,9 +58,29 @@ vector<double> cmm (uint T, uint P, ifstream &inputFile) {
     b[i] = 1 + (w[i] - l[i]) / 2;
   }
 
-  eliminacionGaussiana(C, b);
+  if (!cholesky) {
+    // Cr = b
+    // C = LU
+    // LUr = b
+    eliminacionGaussiana(C, b);
 
-  vector<double> x = sustitucion(C, b);
+    // Ur = L-1b
+    vector<double> r = sustitucion(C, b);
 
-  return x;
+    return r;
+  } else {
+    // Cr = b
+    // C = LL'
+    // LL'r = b
+    vector<vector<double> > L = lDeCholesky(C);
+
+    // Ly = b
+    vector<double> y = sustitucionInvertida(L, b);
+
+    // L'r = y
+    vector<vector<double> > Lt = inversa(L);
+    vector<double> r = sustitucion(Lt, y);
+
+    return r;
+  }
 }

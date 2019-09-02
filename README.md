@@ -20,6 +20,7 @@ g++ src/tp1.cpp -o bin/tp1
 | 1 | WP |
 | 2 | AHP |
 | 3 | ODI |
+| 4 | CMM c/Cholesky |
 
 - `in` path al archivo de entrada
 - `out` path al archivo de salida

@@ -13,7 +13,7 @@ int main (int argc, char *argv[]) {
   char *input = argv[2];
   char *output = argv[3];
 
-  if (mode > 3) {
+  if (mode > 4) {
     printf("Metodo invalido");
     return 1;
   }
@@ -48,6 +48,9 @@ int main (int argc, char *argv[]) {
       break;
     case 3:
       r = pseudo_odi(T, P, inputFile);
+      break;
+    case 4:
+      r = cmm(T, P, inputFile, true);
       break;
   }
 

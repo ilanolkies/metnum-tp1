@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <math.h>
 
 struct winner_looser {
   uint winner;
@@ -13,6 +14,7 @@ struct winner_looser {
 
 #include "eg.cpp"
 #include "backward_substitution.cpp"
+#include "cholesky.cpp"
 
 #include "cmm.cpp"
 #include "wp.cpp"

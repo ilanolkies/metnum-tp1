@@ -16,6 +16,20 @@ void print_matrix_vector (vector<vector<double > > &A, vector<double> &b) {
 }
 
 /**
+ * Imprime en consola una matriz
+ *
+ * @param A matriz
+ */
+void print_matrix (vector<vector<double > > &A) {
+    for (uint i = 0; i < A.size(); i++){
+        for(uint j = 0; j < A.size(); j++){
+            printf("%f ", A[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+/**
  * Imprime en consola un vector
  *
  * @param v vector
