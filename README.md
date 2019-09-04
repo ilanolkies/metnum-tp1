@@ -102,3 +102,18 @@ El resultado es un archivo `./input/atp_matches_2015.in` que representa los enfr
 ### `2e_random`
 
 Dados `ejecuciones` y `enfrentamientos` (linea 36) ejecuta los 3 algoritmos (no ODI) `ejecuciones` veces para el rango de `enfrentamientos` y guarda los plots en `2e_random`.
+
+### Equipos ordenados con ranking
+
+Resultados de la comparacion entre los rankings para un input dado, con formato para latex.
+
+```
+# desde root
+python ./scripts/equiposordenados_nada_ranking.py INPUT
+```
+
+- `INPUT` en el directorio `./input/INPUT.in`
+- Resultado: rankings y tabla de comparcion en `./comparacion/INPUT/resultado_latex.out`
+
+> A diferencia de `comparacion`, esta devuelve los puntos en el ranking en la misma tabla.
+
