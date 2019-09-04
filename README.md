@@ -98,3 +98,7 @@ Para convertir el dataset de ATP a un input de `tp1.cpp` se debe
 El resultado es un archivo `./input/atp_matches_2015.in` que representa los enfrentamientos del dataset.
 
 > Los archivos estan ignorados debido a su peso
+
+### `2e_random`
+
+Dados `ejecuciones` y `enfrentamientos` (linea 36) ejecuta los 3 algoritmos (no ODI) `ejecuciones` veces para el rango de `enfrentamientos` y guarda los plots en `2e_random`.
