@@ -13,7 +13,7 @@ int main (int argc, char *argv[]) {
   char *input = argv[2];
   char *output = argv[3];
 
-  if (mode > 4) {
+  if (mode > 5) {
     printf("Metodo invalido");
     return 1;
   }
@@ -52,6 +52,8 @@ int main (int argc, char *argv[]) {
     case 4:
       r = cmm(T, P, inputFile, true);
       break;
+    case 5:
+      r = matriz_rala(T,P, inputFile);
   }
 
   inputFile.close();

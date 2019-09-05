@@ -21,6 +21,7 @@ g++ src/tp1.cpp -o bin/tp1
 | 2 | AHP |
 | 3 | ODI |
 | 4 | CMM c/Cholesky |
+| 5 | CMM c/Cholesky ralo | 
 
 - `in` path al archivo de entrada
 - `out` path al archivo de salida
@@ -117,3 +118,15 @@ python ./scripts/equiposordenados_nada_ranking.py INPUT
 
 > A diferencia de `comparacion`, esta devuelve los puntos en el ranking en la misma tabla.
 
+### Justo
+Porcentaje en el que cambio el puntaje del equipo 1 si se juegan multiplos de n partidos extra en los que no juega el equipo 1.
+
+```
+# desde root
+python ./scripts/justo.py INPUT
+```
+
+-`INPUT` en el directorio `./input/INPUT.in`
+-`METODO` numero de metodo 
+-`N` cantidad de partidos a jugar extra
+-Resultado en /Justo/INPUT-METODO.out

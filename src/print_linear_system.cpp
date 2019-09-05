@@ -52,3 +52,22 @@ void write_vector (vector<double> &v, ofstream &output){
         output << v[i] << "\n";
     }
 }
+
+
+/** 
+ * Escribe en consola una matriz rala
+ *
+ * @Param A matriz rala
+ *
+ */
+void write_rala(vector<map<int, double> > A){
+  
+  for(int i = 0; i < A.size(); i++){
+    for(map<int,double>::iterator it = A[i].begin(); it != A[i].end(); ++it) {
+      printf("|%d %f| ",it->first,it->second);
+    }
+    printf("\n");
+  }
+  
+}
+

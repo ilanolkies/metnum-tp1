@@ -1,7 +1,7 @@
 using namespace std;
 
 /**
- * Calcula el ranking de CMM
+ * Calcula el ranking de CMM asumiendo que la matriz sera rala
  *
  * @param T Cantidad de equipos
  * @param P Cantidad de enfrentamientos
@@ -9,7 +9,9 @@ using namespace std;
  *
  * @returns Puntos de los T equipos en el ranking de CMM luego de los P enfrentamientos
  */
-vector<double> cmm (uint T, uint P, ifstream &inputFile, bool cholesky = false) {
+
+
+vector<double> matriz_rala(uint T, uint P, ifstream &inputFile) {
   // Contruccion de matriz C y vector b
 
   /**
@@ -20,13 +22,14 @@ vector<double> cmm (uint T, uint P, ifstream &inputFile, bool cholesky = false) 
    * bi = 1 + (wi - li) / 2
    */
 
-  vector<vector<double> > C(T);
+  vector<map<int,double> > C(T);
   for (uint i = 0; i < T; i++) {
-    C[i] = vector<double>(T, 0);
-    C[i][i] += 2;
+
+    C[i][i] = 2;
+
   }
 
-  // Pra construir b necesitamos partidos ganados y perdidos de cada equipo
+  // Para construir b necesitamos partidos ganados y perdidos de cada equipo
   vector<double> w(T, 0);
   vector<double> l(T, 0);
 
@@ -42,13 +45,22 @@ vector<double> cmm (uint T, uint P, ifstream &inputFile, bool cholesky = false) 
     w[wl.winner] += 1;
     l[wl.looser] += 1;
 
-    // i!=j
-    C[iEquipo][jEquipo] -= 1;
-    C[jEquipo][iEquipo] -= 1;
 
-    // i==j
+    if(C[iEquipo].count(jEquipo) == 1){
+      C[iEquipo][jEquipo] -= 1;
+    }else{
+      C[iEquipo][jEquipo] = -1;
+    }
+    if(C[jEquipo].count(iEquipo) == 1){
+      C[jEquipo][iEquipo] -= 1;
+    }else{
+      C[jEquipo][iEquipo] = -1;
+    }
+
     C[iEquipo][iEquipo] += 1;
     C[jEquipo][jEquipo] += 1;
+
+    
   }
 
   inputFile.close();
@@ -58,30 +70,22 @@ vector<double> cmm (uint T, uint P, ifstream &inputFile, bool cholesky = false) 
     b[i] = 1 + (w[i] - l[i]) / 2;
   }
 
+  
+  //Cholesky
 
-  if (!cholesky) {
-    // Cr = b
-    // C = LU
-    // LUr = b
-    eliminacionGaussiana(C, b);
+  // Cr = b
+  // C = LL'
+  // LL'r = b
+  vector<map<int,double> > L = lDeCholesky_ralo(C);
 
-    // Ur = L-1b
-    vector<double> r = sustitucion(C, b);
+  // Ly = b
+  std::vector<double> y = sustitucionInvertida_ralo(L,b);
+  
+  //L'r = y
+  vector<map<int, double> > Lt = inversa_ralo(L); 
+  vector<double> r = sustitucion_ralo(Lt,y);
 
-    return r;
-  } else {
-    // Cr = b
-    // C = LL'
-    // LL'r = b
-    vector<vector<double> > L = lDeCholesky(C);
-
-    // Ly = b
-    vector<double> y = sustitucionInvertida(L, b);
-
-    // L'r = y
-    vector<vector<double> > Lt = inversa(L);
-    vector<double> r = sustitucion(Lt, y);
-
-    return r;
-  }
+  return r;
+  
+  
 }
