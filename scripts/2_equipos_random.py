@@ -34,7 +34,7 @@ def rankingPonderado(output):
   return [r/t for r in ranking]
 
 ejecuciones = range(1,20)
-enfrentamientos = range(50,200)
+enfrentamientos = range(1,50)
 
 xAxis = np.repeat(np.array(enfrentamientos), ejecuciones[-1])
 cmmY = []
@@ -74,7 +74,7 @@ plt.axis([xAxis[0], xAxis[-1], 0, 0.5])
 plt.title('CMM')
 plt.xlabel('Cant. de enfrentamientos')
 plt.ylabel('Diferencia entre rankings normalizada')
-plt.savefig('2e_random/2e_random-cmm.pdf')
+plt.savefig('2e_random/2erandomcmm50.jpg')
 plt.clf()
 
 plt.plot(xAxis, wpY, 'ro')
@@ -82,7 +82,7 @@ plt.axis([xAxis[0], xAxis[-1], 0, 0.5])
 plt.title('WP')
 plt.xlabel('Cant. de enfrentamientos')
 plt.ylabel('Diferencia entre rankings normalizada')
-plt.savefig('2e_random/2e_random-wp.pdf')
+plt.savefig('2e_random/2erandomwp50.jpg')
 plt.clf()
 
 plt.plot(xAxis, ahpY, 'ro')
@@ -90,5 +90,5 @@ plt.axis([xAxis[0], xAxis[-1], 0, 0.5])
 plt.title('AHP')
 plt.xlabel('Cant. de enfrentamientos')
 plt.ylabel('Diferencia entre rankings normalizada')
-plt.savefig('2e_random/2e_random-ahp.pdf')
+plt.savefig('2e_random/2erandomahp50.jpg')
 plt.clf()
