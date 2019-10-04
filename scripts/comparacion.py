@@ -17,6 +17,7 @@ os.system(mkdir)
 # corre los 4 metodos y el output en comparacion/INPUT/metodo-x.out
 for i in range(4):
   run = "./bin/tp1 {0} input/{1}.in comparacion/{1}/metodo-{0}.out".format(i, INPUT)
+  print(run)
   os.system(run)
 
 out_dir = 'comparacion/{}'.format(INPUT)

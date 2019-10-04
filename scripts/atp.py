@@ -69,13 +69,13 @@ cantPartidos = input[0].split(' ')[1]
 input[0] = str(len(seEnfrento)) + ' ' +str(cantPartidos)
 
 # escribir los resultados en un archivo valido como input
-f = open('atp/input_recortado.in', 'w')
+f = open('input/input_recortado.in', 'w')
 f.writelines(listToString(line)+ '\n' for line in input)
 f.close()
 
 
 # correr atp
-os.system('./bin/tp1 0 atp/input_recortado.in atp/input_recortado.out')
+#os.system('./bin/tp1 0 input/input_recortado.in input/input_recortado.out')
 
 
 
@@ -83,3 +83,6 @@ os.system('./bin/tp1 0 atp/input_recortado.in atp/input_recortado.out')
 
 
 # estaria bueno usar los nombres del csv en la tabla
+
+
+os.system('python scripts/comparacion.py input_recortado')
