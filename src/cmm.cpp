@@ -26,7 +26,8 @@ vector<double> cmm (uint T, uint P, ifstream &inputFile, bool cholesky = false) 
     C[i][i] += 2;
   }
 
-  // Pra construir b necesitamos partidos ganados y perdidos de cada equipo
+
+  // Para construir b necesitamos partidos ganados y perdidos de cada equipo
   vector<double> w(T, 0);
   vector<double> l(T, 0);
 

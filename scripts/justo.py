@@ -45,7 +45,7 @@ def partido_azar(cant_equipos):
 	L.append(score2) 
 	return L
 
-for j in range(3):
+for j in range(10):
 	#Abro el archivo anterior
 	if(j > 0):
 
@@ -96,7 +96,7 @@ casos = []
 casos.append(leer_primera_linea("justo/metodo{0}.out".format(NUMERO)))
 
 
-for i in range(3):
+for i in range(10):
 	##Corre el programa
 	run = "./bin/tp1 {0} input/{1}-{2}.in justo/metodo-{2}-{0}.out".format(NUMERO, INPUT, i)
 	os.system(run)
@@ -108,7 +108,7 @@ for i in range(3):
 if os.path.exists("justo/Porcentaje{0}-{1}".format(INPUT, NUMERO)):
   os.remove("justo/Porcentaje{0}-{1}".format(INPUT, NUMERO))
 
-for i in range(1,4):
+for i in range(1,11):
 	x = 1-casos[i]/casos[i-1]
 	f = open("justo/Porcentaje{0}-{1}".format(INPUT, NUMERO), "a")
 	print(x)
