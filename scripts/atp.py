@@ -163,9 +163,9 @@ def diferenciaConATP(ranking):
 def getArrow(n):
 	if n == '-':
 		return '-'
-	if int(n) > 0:
+	if int(n) < 0:
 		return '\\textcolor{green}{$\\uparrow$}'
-	if int(n) < 0: 
+	if int(n) > 0: 
 		return '\\textcolor{red}{$\\downarrow$}'
 	return ''
 
