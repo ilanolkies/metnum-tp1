@@ -105,12 +105,16 @@ for e in lectura_ranking:
 		atp[int(jugador)] = j;
 		atpP.append(jugador)
 		j+= 1
+
+
 	#else:
 	#	atp[int(row[2])] = int(row[1]) 
 	#	atpP.append(' {} '.format(row[2]))
 
-while len(atpP) < 431:
+while len(atpP) < len(seEnfrento.keys())+1:
 	atpP.append(' 1 ')
+
+
 
 #######Comparacion modificado ########
 
@@ -135,8 +139,8 @@ def rankingOrdenado(method):
   f = open('{}/metodo-{}.out'.format(out_dir, method), 'r')
   ranking = f.read().splitlines()
   f.close()
-  rankingConEquipo = [(i+1, float(ranking[i])) for i in range(len(ranking))]
-  rankingConEquipo.sort(key = lambda val : val[1])
+  rankingConEquipo = [(i, float(ranking[i])) for i in range(len(ranking))]
+  rankingConEquipo.sort(key = lambda val : val[1], reverse=True)
   return [ranking[0] for ranking in rankingConEquipo]
 
 # ordenar los 4 rankings
@@ -148,23 +152,25 @@ odi = rankingOrdenado(3)
 def diferenciaConATP(ranking):
 	res = []
 	for i,r in enumerate(ranking):
-		if(r in atp.keys()):
-			res.append((r, str(i-atp[int(r)])))
+		if(r+1 in atp.keys()):
+			res.append((r+1, str(i-atp[int(r)+1]+1)))
 		else:
-			res.append((r, '-'))
+			res.append((r+1, '-'))
 
 	return res
 #  return [(r, i-atp[int(r)]) for i,r in enumerate(ranking)]
 
 def getArrow(n):
-  if n > 0:
-    return '\\textcolor{green}{$\\uparrow$}'
-  if n < 0: 
-    return '\\textcolor{red}{$\\downarrow$}'
-  return ''
+	if n == '-':
+		return '-'
+	if int(n) > 0:
+		return '\\textcolor{green}{$\\uparrow$}'
+	if int(n) < 0: 
+		return '\\textcolor{red}{$\\downarrow$}'
+	return ''
 
 def getDiff(n):
-  if n == 0 or n == '-':
+  if n == '-' or n == 0:
     return '-'
   return str(abs(int(n)))
 
@@ -184,6 +190,8 @@ out = '''\\begin{center}
     \\hline
     ATP & \multicolumn{2}{c ||}{CMM} & \multicolumn{2}{c ||}{WP} & \multicolumn{2}{c ||}{AHP} & \multicolumn{2}{c |}{ODI} \\\\
     \hline\hline'''
+
+
 
 
 for i in range(len(cmm)):
@@ -251,7 +259,7 @@ for i,e in enumerate(input[5:435]):
 		row[23] = jugadores[' {} '.format(int(row[23]))]
 
 	input[i+5] = row
-
+#20
 f = open('comparacion/input_recortado/resultado_latex.out', 'w')
 f.writelines(listToString(line) + '\n' for line in input[0:20])
 f.writelines(listToString(line) + '\n' for line in input[435:])
